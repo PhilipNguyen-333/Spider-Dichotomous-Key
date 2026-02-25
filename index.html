@@ -1,7 +1,6 @@
 <!DOCTYPE html> 
 <html> 
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
- 
 THIS CODE SHOULD NOT BE USED TO DIAGNOSE SPIDERS.
  
  
@@ -23,114 +22,145 @@ Known Issues:
 [ADD ANY KNOWN ISSUES HERE]
 
 -->
-	
-   <head> 
-      <title>Spider Dichotomous Key</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
-   </head> 
 
+<head> 
+  <title>Spider Dichotomous Key</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="w3-colors-flat.css">
 
-<script>
+  <script>
     function show(id) { //this function causes any hidden blocks of html to become unhidden
-        document.getElementById(id).style.display = "block";
-    };
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
 
-</script>
+    <style>   
 
+        /* --- TRUE STICKY FOOTER LAYOUT --- */
 
+        /* Make the html and body elements fill the full height of the browser window */
+        html, body {
+            height: 100%;   /* ensures the flex layout can push the footer down */
+            margin: 0;      /* removes default browser margins */
+        }
 
-<style>	
-.body {
-     margin: 0em;
-}
+        /* Turn the body into a vertical flex container */
+        body {
+            display: flex;          /* enables flexbox layout */
+            flex-direction: column; /* stacks children top-to-bottom */
+        }
 
-button {
-  margin: 10px 0;          /* space above and below */
-  padding: 12px 18px;      /* space inside the button */
-  border-radius: 10px;     /* rounded corners */
-  border: none;            /* remove default border */
-  background-color: #ff9800; /* orange color */
-  color: white;            /* text color */
-  font-size: 1rem;         /* readable text */
-  cursor: pointer;         /* pointer cursor on hover */
-}
+        /* This is the main content area */
+        #content-area {
+            flex: 1; /* grows to fill available space, pushing the footer to the bottom */
+        }
 
-button:hover {
-  background-color: #e68900; /* slightly darker on hover */
-}
+        /* --- BUTTON STYLING --- */
 
-.question-block {
-  margin: 20px 0;                 /* space between blocks */
-  padding: 18px 22px;             /* internal spacing */
-  background: #fffdf7;            /* soft warm background */
-  border-left: 6px solid #ff9800; /* bold accent bar */
-  border-radius: 10px;            /* rounded corners */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* soft shadow */
-  transition: all 0.3s ease;      /* smooth hover animation */
-}
+        button {
+            margin: 10px 0;          /* space above and below each button */
+            padding: 12px 18px;      /* internal spacing for a larger click area */
+            border-radius: 10px;     /* rounded corners */
+            border: none;            /* removes default button border */
+            background-color: #ff9800; /* orange background color */
+            color: white;            /* white text */
+            font-size: 1rem;         /* readable text size */
+            cursor: pointer;         /* pointer cursor on hover */
+        }
 
-.question-block:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
-  transform: translateY(-2px);    /* subtle lift on hover */
-}
+        /* Change button color when hovered */
+        button:hover {
+            background-color: #e68900; /* slightly darker orange on hover */
+        }
 
+        /* --- QUESTION BLOCK STYLING --- */
 
-</style>
+        .question-block {
+            margin: 20px 0;                 /* space between question blocks */
+            padding: 18px 22px;             /* internal spacing */
+            background: #fffdf7;            /* soft off-white background */
+            border-left: 6px solid #ff9800; /* orange accent bar on the left */
+            border-radius: 10px;            /* rounded corners */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* soft drop shadow */
+            transition: all 0.3s ease;      /* smooth animation for hover effects */
+        }
+
+        /* Hover effect for question blocks */
+        .question-block:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.22); /* stronger shadow on hover */
+            transform: translateY(-2px);             /* slight upward lift */
+        }
+
+        /* --- FOOTER (NOT FIXED ANYMORE) --- */
+
+        footer {
+            width: 100%;             /* full width across the bottom */
+            background-color: #e67e22; /* footer background color */
+            padding: 9px;            /* internal spacing */
+            text-align: center;      /* center the footer text */
+            color: white;            /* white text */
+        }
+
+    </style>
+
+</head>
 
 <body>
-<div id="header" class="w3-container w3-flat-carrot">
-	<h1>Spider Dichotomous Key</h1>
-</div>
-	
-<div id="content" class="w3-container">
-	<p>Below is a diagram of the spider dichotomous key for your reference. This app aims to provide an example of how to structure a dichotomous key and hopefully give some information on identifying eight common spiders in the United States. HOWEVER, THIS APP SHOULD NOT BE USED IN REAL LIFE SCENARIOS AND IS ONLY FOR PROVIDING A CODING TEMPLATE.</p>
-</div>
 
-<div class="question-block" id="q1">
+<div id="content-area">
+
+  <div id="header" class="w3-container w3-flat-carrot">
+    <h1>Spider Dichotomous Key</h1>
+  </div>
+
+  <div id="content" class="w3-container">
+    <p>Below is a diagram of the spider dichotomous key for your reference. This app aims to provide an example of how to structure a dichotomous key and hopefully give some information on identifying eight common spiders in the United States. HOWEVER, THIS APP SHOULD NOT BE USED IN REAL LIFE SCENARIOS AND IS ONLY FOR PROVIDING A CODING TEMPLATE.</p>
+  </div>
+
+  <div class="question-block" id="q1">
     <p> Q1) Are its legs extremely thin relative to body size?</p>
-    <button class="w3-btn w3-orange" onclick="show('q2_yes')">Yes</button> 
-    <button class="w3-btn w3-orange" onclick="show('q2_no')">No</button>
-</div>
+    <button onclick="show('q2_yes')">Yes</button> 
+    <button onclick="show('q2_no')">No</button>
+  </div>
 
-<div class="question-block" id="q2_yes" style="display:none;"> 
+  <div class="question-block" id="q2_yes" style="display:none;"> 
     <p> Q2) What best describes the spider?</p> 
-    <button class="w3-btn w3-orange" onclick="show('cellar')">Body extremely small; often hangs in loose webs in corners</button> 
-    <button class="w3-btn w3-orange" onclick="show('widow')">Body larger and more rounded; makes irregular webs</button> 
-</div>
+    <button onclick="show('cellar')">Body extremely small; often hangs in loose webs in corners</button> 
+    <button onclick="show('widow')">Body larger and more rounded; makes irregular webs</button> 
+  </div>
 
-<div class="question-block" id="q2_no" style="display:none;">
+  <div class="question-block" id="q2_no" style="display:none;">
     <p> Q2) Does it build a web structure?</p>
-    <button class="w3-btn w3-orange" onclick="show('q3_yes')">Yes</button> 
-    <button class="w3-btn w3-orange" onclick="show('q3_no')">No</button> 
-</div>
+    <button onclick="show('q3_yes')">Yes</button> 
+    <button onclick="show('q3_no')">No</button> 
+  </div>
 
-<div class="question-block" id="q3_yes" style="display:none;"> 
+  <div class="question-block" id="q3_yes" style="display:none;"> 
     <p> Q3) What is the type of web produced and other unique features?</p>
-    <button class="w3-btn w3-orange" onclick="show('weaver')">Web is a large, wheel-shaped orb</button> 
-    <button class="w3-btn w3-orange" onclick="show('house')">Messy cobweb. Spider is brown and small (less than a centimeter long)</button> 
-    <button class="w3-btn w3-orange" onclick="show('yellow')">Does not build traditional webs but instead builds sacs of silk. Spider has a pale yellow color</button> 
-</div>    
+    <button onclick="show('weaver')">Web is a large, wheel-shaped orb</button> 
+    <button onclick="show('house')">Messy cobweb. Spider is brown and small (less than a centimeter long)</button> 
+    <button onclick="show('yellow')">Does not build traditional webs but instead builds sacs of silk. Spider has a pale yellow color</button> 
+  </div>    
 
-<div class="question-block" id="q3_no" style="display:none;"> 
+  <div class="question-block" id="q3_no" style="display:none;"> 
     <p> Q3) How many eyes does it have?</p>
-    <button class="w3-btn w3-orange" onclick="show('recluse')">6 eyes</button> 
-    <button class="w3-btn w3-orange" onclick="show('q4')">8 eyes</button> 
-</div>
+    <button onclick="show('recluse')">6 eyes</button> 
+    <button onclick="show('q4')">8 eyes</button> 
+  </div>
 
-<div class="question-block" id="q4" style="display:none;"> 
-    <p> Q4) What type of movements does its make?</p>
-    <button class="w3-btn w3-orange" onclick="show('jumping')">Jumps rather than runs</button> 
-    <button class="w3-btn w3-orange" onclick="show('wolf')">Fast-moving on ground</button> 
-</div>
+  <div class="question-block" id="q4" style="display:none;"> 
+    <p> Q4) What type of movements does it make?</p>
+    <button onclick="show('jumping')">Jumps rather than runs</button> 
+    <button onclick="show('wolf')">Fast-moving on ground</button> 
+  </div>
 
-<footer class="w3-container w3-flat-carrot" padding: 20 px>
-	<p>DIY!</p>
+</div> <!-- END content-area -->
+
+<footer>
+  <p>DIY!</p>
 </footer>
 
-
 </body>
-
 </html>
