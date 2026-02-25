@@ -2,7 +2,7 @@
 <html> 
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
  
-THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE SPIDERS.
  
  
 Authors in chronological order of contribution:
@@ -25,7 +25,7 @@ Known Issues:
 -->
 	
    <head> 
-      <title>Cold or Allergy</title>  
+      <title>Spider Dichotomous Key</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="mobile-web-app-capable" content="yes">
       <link rel="stylesheet" href="w3.css">
@@ -34,20 +34,11 @@ Known Issues:
 
 
 <script>
-        var allergy_count = 0;
-        var cold_count = 0;
+    function show(id) { //this function causes any hidden blocks of html to become unhidden
+        document.getElementById(id).style.display = "block";
+    };
 
-
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
-		alert(allergy_count);
-        }
-
-        function coldAdd(){
-            cold_count = cold_count + 1;
-        }
-
-  </script>
+</script>
 
 
 
@@ -55,57 +46,49 @@ Known Issues:
 .body {
      margin: 0em;
 }
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
+
+button {
+  margin: 10px 0;          /* space above and below */
+  padding: 12px 18px;      /* space inside the button */
+  border-radius: 10px;     /* rounded corners */
+  border: none;            /* remove default border */
+  background-color: #ff9800; /* orange color */
+  color: white;            /* text color */
+  font-size: 1rem;         /* readable text */
+  cursor: pointer;         /* pointer cursor on hover */
 }
 
-  .page:target {
-    left: 0vw;
-    z-index: 1;
+button:hover {
+  background-color: #e68900; /* slightly darker on hover */
+
+
+  
 }
+
+
 </style>
 
 <body>
 <div id="header" class="w3-container w3-flat-carrot">
-	<h1>Cold or Allergies!?</h1>
+	<h1>Spider Dichotomous Key</h1>
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
-	
-	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
-	
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-</div>
-	
-<div class="page" id="one">
-	<div id="header" class="w3-container w3-flat-carrot">
-		<h1>Question 1</h1>
-	</div>
-	
-    	<div id="content" class="w3-container">
-        <p>Put Question 1 content here.</p>    
-    	</div>
+	<p>Below is a diagram of the spider dichotomous key for your reference. This app aims to provide an example of how to structure a dichotomous key and hopefully give some information on identifying eight common spiders in the United States. HOWEVER, THIS APP SHOULD NOT BE USED IN REAL LIFE SCENARIOS AND IS ONLY FOR PROVIDING A CODING TEMPLATE.</p>
 </div>
 
-<div class="page" id="two">
-	<div class="w3-container w3-flat-carrot">
-		<h1>Question 2</h1>
-	</div>
-	
-	<div id="content" class="w3-container">
-		<p>Content of page 2 goes here.</p>
-	</div>
-</div>	
+<div id="q1">
+    <p> Q1) Are its legs extremely thin relative to body size?</p>
+    <button class="w3-btn w3-orange" onclick="show('q2_yes')">Yes</button> 
+    <button class="w3-btn w3-orange" onclick="show('q2_no')">No</button>
+</div>
+
+<div id="q2_yes" style="display:none;"> 
+    <p> Q2) What best describes the spider?</p> 
+    <button class="w3-btn w3-orange" onclick="show('cellar')">Body extremely small; often hangs in loose webs in corners</button> 
+    <button class="w3-btn w3-orange" onclick="show('widow')">Body larger and more rounded; makes irregular webs</button> 
+</div>
+
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
