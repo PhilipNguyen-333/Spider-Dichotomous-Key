@@ -30,11 +30,22 @@ Known Issues:
   <link rel="stylesheet" href="w3.css">
   <link rel="stylesheet" href="w3-colors-flat.css">
 
-  <script>
-    function show(id) { //this function causes any hidden blocks of html to become unhidden
-      document.getElementById(id).style.display = "block";
-    }
-  </script>
+<script>
+    function show(id) {
+        // Show the next question
+        document.getElementById(id).style.display = "block";
+
+        // Disable all buttons inside the block that was just answered
+        const parentBlock = event.target.closest(".question-block"); // finds the current question-block that the button belongs to, then stores it in the variable parentBlock
+        const buttons = parentBlock.querySelectorAll("button"); // selects all of the buttons found in the current question-block
+
+        buttons.forEach(btn => {
+            btn.disabled = true;          // makes the buttons unclickable
+            btn.style.opacity = "0.6";    // optional: the button now appears fainter (decreased opacity)
+        });
+}
+</script>
+
 
     <style>   
 
@@ -117,6 +128,8 @@ Known Issues:
 
   <div id="content" class="w3-container">
     <p>Below is a diagram of the spider dichotomous key for your reference. This app aims to provide an example of how to structure a dichotomous key and hopefully give some information on identifying eight common spiders in the United States. HOWEVER, THIS APP SHOULD NOT BE USED IN REAL LIFE SCENARIOS AND IS ONLY FOR PROVIDING A CODING TEMPLATE.</p>
+    <img src="images/spider_dichotomous_key.jpg"
+        alt="Spider dichotomous key image">
   </div>
 
   <div class="question-block" id="q1">
@@ -156,6 +169,56 @@ Known Issues:
     <button onclick="show('wolf')">Fast-moving on ground</button> 
   </div>
 
+<!-- All of the results from the dichotomous key are below-->
+
+  <div class="question-block" id="cellar" style="display:none;"> 
+    <p> Result: Cellar spider</p>
+    <img src="images/cellar_spider.png"
+        alt="Cellar spider image">
+  </div>  
+
+  <div class="question-block" id="widow" style="display:none;"> 
+    <p> Result: Black widow</p>
+    <img src="images/black_widow.png"
+        alt="Black widow image">
+  </div>    
+
+  <div class="question-block" id="weaver" style="display:none;"> 
+    <p> Result: Orb weaver</p>
+    <img src="images/orb_weaver.png"
+        alt="Orb weaver image">
+  </div>  
+
+  <div class="question-block" id="house" style="display:none;"> 
+    <p> Result: American house spider </p>
+    <img src="images/american_house_spider.png"
+        alt="American house spider">
+  </div>  
+ 
+  <div class="question-block" id="yellow" style="display:none;"> 
+    <p> Result: Yellow sac spider</p>
+    <img src="images/yellow_sac_spider.png"
+        alt="Yellow sac spider image">
+  </div>  
+
+  <div class="question-block" id="recluse" style="display:none;"> 
+    <p> Result: Brown recluse</p>
+    <img src="images/brown_recluse.png"
+        alt="Brown recluse image">
+  </div>  
+
+  <div class="question-block" id="jumping" style="display:none;"> 
+    <p> Result: Jumping spider</p>
+    <img src="images/jumping_spider.png"
+        alt="Jumping spider image">
+  </div>  
+
+  <div class="question-block" id="wolf" style="display:none;"> 
+    <p> Result: Wolf spider</p>
+    <img src="images/wolf_spider.png"
+        alt="Wolf spider image">
+  </div>  
+  
 </div> <!-- END content-area -->
 
 <footer>
